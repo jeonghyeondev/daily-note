@@ -47,7 +47,7 @@ const textMap = {
   register: '회원가입',
 };
 
-const AuthForm = ({ type }) => {
+const AuthForm = ({ type, form, onChange, onSubmit }) => {
   const text = textMap[type];
 
   const classes = useStyles();
@@ -56,7 +56,7 @@ const AuthForm = ({ type }) => {
       <Typography display="block" className={classes.formTitle}>
         {text}
       </Typography>
-      <FormControl fullWidth={true}>
+      <FormControl fullWidth={true} onSubmit={onSubmit}>
         <TextField
           autoComplete="username"
           name="username"
@@ -65,6 +65,8 @@ const AuthForm = ({ type }) => {
           color="secondary"
           fullWidth
           className={classes.forminput}
+          onChange={onChange}
+          value={form.username}
         />
         <TextField
           autoComplete="new-password"
@@ -75,6 +77,8 @@ const AuthForm = ({ type }) => {
           color="secondary"
           fullWidth
           className={classes.forminput}
+          onChange={onChange}
+          value={form.password}
         />
         {type === 'register' && (
           <TextField
@@ -86,6 +90,8 @@ const AuthForm = ({ type }) => {
             color="secondary"
             fullWidth
             className={classes.forminput}
+            onChange={onChange}
+            value={form.passwordConfirm}
           />
         )}
         <Button
