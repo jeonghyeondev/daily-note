@@ -5,14 +5,22 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './modules';
+import createSagaMiddleware from 'redux-saga';
+import rootReducer, { rootSaga } from './modules';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import CustomThemeProvider from './themes/CustomThemeProvider';
-// 리듀서
-const store = createStore(rootReducer, composeWithDevTools());
+
+const sagaMiddleware = createSagaMiddleware();
+// 스토어
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(sagaMiddleware)),
+);
+
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>
