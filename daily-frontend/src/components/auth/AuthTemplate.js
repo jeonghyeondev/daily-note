@@ -32,6 +32,10 @@ const useStyles = makeStyles({
   },
 });
 
+/**
+ * 회원가입 or 로그인폼 스타일
+ */
+
 const AuthTemplate = ({ children }) => {
   const classes = useStyles();
 

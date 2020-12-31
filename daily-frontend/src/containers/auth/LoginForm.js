@@ -5,6 +5,10 @@ import AuthForm from '../../components/auth/AuthForm';
 import { check } from '../../modules/user';
 import { withRouter } from 'react-router-dom';
 
+/**
+ * 로그인폼
+ */
+
 const LoginForm = ({ history }) => {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();

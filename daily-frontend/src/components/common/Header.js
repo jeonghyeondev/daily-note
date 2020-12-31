@@ -9,8 +9,8 @@ import {
   Switch,
   IconButton,
   Button,
+  Divider,
 } from '@material-ui/core';
-// import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import { CustomThemeContext } from '../../themes/CustomThemeProvider';
@@ -28,9 +28,13 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
   },
   headerBtn: {
-    margin: theme.spacing(0, 4),
+    margin: theme.spacing(0, 3),
   },
 }));
+
+/**
+ * 헤더
+ */
 
 const Header = ({ user, onLogout }) => {
   const classes = useStyles();
@@ -49,7 +53,11 @@ const Header = ({ user, onLogout }) => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed" className={classes.appBar}>
+      <AppBar
+        position="fixed"
+        className={classes.appBar}
+        style={{ padding: '4px 0' }}
+      >
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             <Link to="/">데일리 노트</Link>
@@ -57,7 +65,6 @@ const Header = ({ user, onLogout }) => {
 
           {user ? (
             <React.Fragment>
-              {/* <AccountCircleIcon fontSize="large" /> */}
               <Typography
                 variant="subtitle1"
                 className={classes.username}
@@ -88,6 +95,12 @@ const Header = ({ user, onLogout }) => {
               Login
             </Button>
           )}
+          <Divider
+            orientation="vertical"
+            variant="middle"
+            light
+            style={{ height: '20px', marginRight: '32px' }}
+          />
           <FormControlLabel
             control={<Switch checked={isDark} onChange={handleThemeChange} />}
             label={

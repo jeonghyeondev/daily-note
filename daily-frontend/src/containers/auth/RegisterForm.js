@@ -5,6 +5,9 @@ import AuthForm from '../../components/auth/AuthForm';
 import { check } from '../../modules/user';
 import { withRouter } from 'react-router-dom';
 
+/**
+ * 회원가입폼
+ */
 const RegisterForm = ({ history }) => {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
