@@ -2,11 +2,11 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import {
-  FormControl,
   TextField,
   Typography,
   Button,
   Box,
+  FormHelperText,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -24,6 +24,11 @@ const useStyles = makeStyles((theme) => ({
   formButton: {
     marginTop: theme.spacing(3),
     fontSize: 18,
+  },
+  errorMessage: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   formFooter: {
     marginTop: theme.spacing(2),
@@ -47,16 +52,20 @@ const textMap = {
   register: '회원가입',
 };
 
-const AuthForm = ({ type, form, onChange, onSubmit }) => {
+const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
   const text = textMap[type];
 
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Typography display="block" className={classes.formTitle}>
+      <Typography
+        display="block"
+        className={classes.formTitle}
+        color="secondary"
+      >
         {text}
       </Typography>
-      <FormControl fullWidth={true} onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
         <TextField
           autoComplete="username"
           name="username"
@@ -94,15 +103,22 @@ const AuthForm = ({ type, form, onChange, onSubmit }) => {
             value={form.passwordConfirm}
           />
         )}
+        {error && (
+          <FormHelperText error className={classes.errorMessage}>
+            {error}
+          </FormHelperText>
+        )}
         <Button
           variant="contained"
+          type="submit"
           color="secondary"
           size="large"
           className={classes.formButton}
+          fullWidth
         >
           {text}
         </Button>
-      </FormControl>
+      </form>
       <Box className={classes.formFooter}>
         {type === 'login' ? (
           <Link to="/register">회원가입</Link>

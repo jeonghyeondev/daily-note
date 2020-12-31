@@ -2,7 +2,7 @@ import { createAction, handleActions } from 'redux-actions';
 import produce from 'immer';
 import { takeLatest } from 'redux-saga/effects';
 import createRequestSaga, {
-  createRequesActionTypes,
+  createRequestActionTypes,
 } from '../lib/createRequestSaga';
 import * as authAPI from '../lib/api/auth';
 
@@ -11,11 +11,11 @@ const CHANGE_FIELD = 'auth/CHANGE_FIELD';
 const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
 
 // 액션 타입 선언
-const [REGISTER, REGISTER_SUCCESS, REGISTER_FAILURE] = createRequesActionTypes(
+const [REGISTER, REGISTER_SUCCESS, REGISTER_FAILURE] = createRequestActionTypes(
   'auth/REGISTER',
 );
 
-const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] = createRequesActionTypes(
+const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] = createRequestActionTypes(
   'auth/LOGIN',
 );
 
@@ -39,10 +39,10 @@ export const login = createAction(LOGIN, ({ username, password }) => ({
 }));
 
 // saga 생성
-const regsiterSaga = createRequestSaga(REGISTER, authAPI.register);
+const registerSaga = createRequestSaga(REGISTER, authAPI.register);
 const loginSaga = createRequestSaga(LOGIN, authAPI.login);
 export function* authSaga() {
-  yield takeLatest(REGISTER, regsiterSaga);
+  yield takeLatest(REGISTER, registerSaga);
   yield takeLatest(LOGIN, loginSaga);
 }
 

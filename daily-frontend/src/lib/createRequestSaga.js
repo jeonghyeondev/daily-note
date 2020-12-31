@@ -2,7 +2,7 @@ import { call, put } from 'redux-saga/effects';
 import { startLoading, finishLoading } from '../modules/loading';
 
 // 액션타입 한꺼번에 만드는 함수 선언
-export const createRequesActionTypes = (type) => {
+export const createRequestActionTypes = (type) => {
   const SUCCESS = `${type}_SUCCESS`;
   const FAILURE = `${type}_FAILURE`;
   return [type, SUCCESS, FAILURE];
@@ -13,13 +13,13 @@ export default function createRequestSaga(type, request) {
   const FAILURE = `${type}_FAILURE`;
 
   return function* (action) {
-    yield put(startLoading(type)); // 로딩시작
-
+    yield put(startLoading(type)); // 로딩 시작
     try {
       const response = yield call(request, action.payload);
       yield put({
         type: SUCCESS,
         payload: response.data,
+        meta: response,
       });
     } catch (e) {
       yield put({

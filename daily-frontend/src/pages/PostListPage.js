@@ -11,8 +11,8 @@ const PostListPage = () => {
       <HeaderContaeinr />
       <Toolbar />
       <Typography>
-        {/* 포스트 리스트포스트 리스트포스트 리스트포스트 리스트포스트 리스트포스트 */}
-        {/* 리스트 포스트 리스트 포스트 리스트 */}
+        포스트 리스트포스트 리스트포스트 리스트포스트 리스트포스트 리스트포스트
+        리스트 포스트 리스트 포스트 리스트
       </Typography>
     </React.Fragment>
   );

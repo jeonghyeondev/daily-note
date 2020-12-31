@@ -17,8 +17,8 @@ const useStyles = makeStyles({
     width: '100%',
   },
   authWrap: {
-    padding: '2rem',
-    width: 360,
+    padding: '2.5rem',
+    width: 400,
     borderRadius: 5,
   },
   authTtitle: {
