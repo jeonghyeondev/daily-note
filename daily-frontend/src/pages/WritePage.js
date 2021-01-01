@@ -1,5 +1,5 @@
 import React from 'react';
-import WriteActionButtons from '../components/write/WriteActionButtons';
+import WriteActionButtonContainer from '../containers/write/WriteActionButtonContainer';
 import EditorContainer from '../containers/write/EditorContainer';
 import TagBoxContainer from '../containers/write/TagBoxContainer';
 
@@ -9,7 +9,7 @@ const WritePage = () => {
     <React.Fragment>
       <EditorContainer />
       <TagBoxContainer />
-      <WriteActionButtons />
+      <WriteActionButtonContainer />
     </React.Fragment>
   );
 };
