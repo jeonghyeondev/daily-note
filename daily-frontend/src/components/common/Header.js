@@ -54,11 +54,7 @@ const Header = ({ user, onLogout }) => {
 
   return (
     <div className={classes.root}>
-      <AppBar
-        position="fixed"
-        className={classes.appBar}
-        style={{ padding: '4px 0' }}
-      >
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             <Link to="/">데일리 노트</Link>
