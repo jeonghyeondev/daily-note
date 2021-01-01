@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Paper, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -49,6 +50,10 @@ const AuthTemplate = ({ children }) => {
       </Box>
     </Paper>
   );
+};
+
+AuthTemplate.propTypes = {
+  children: PropTypes.node,
 };
 
 export default AuthTemplate;

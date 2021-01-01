@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Divider,
@@ -12,7 +13,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(0, 5, 5, 5),
+    padding: theme.spacing(0, 5, 4, 5),
     width: '100%',
   },
   tagTitle: {
@@ -62,7 +63,7 @@ const TagList = React.memo(({ tags, onRemove }) => (
   </div>
 ));
 
-const TagBox = () => {
+const TagBox = ({ tags, onChangeTags }) => {
   const classes = useStyles();
   const [input, setInput] = useState('');
   const [localTags, setLocalTags] = useState([]);
@@ -71,16 +72,20 @@ const TagBox = () => {
     (tag) => {
       if (!tag) return; // 공백이라면 추가하지 않음
       if (localTags.includes(tag)) return; // 이미 존재한다면 추가하지 않음
-      setLocalTags([...localTags, tag]);
+      const nextTags = [...localTags, tag];
+      setLocalTags(nextTags);
+      onChangeTags(nextTags);
     },
-    [localTags],
+    [localTags, onChangeTags],
   );
 
   const onRemove = useCallback(
     (tag) => {
-      setLocalTags(localTags.filter((t) => t !== tag));
+      const nextTags = localTags.filter((t) => t !== tag);
+      setLocalTags(nextTags);
+      onChangeTags(nextTags);
     },
-    [localTags],
+    [localTags, onChangeTags],
   );
 
   const onChange = useCallback((e) => {
@@ -97,9 +102,9 @@ const TagBox = () => {
   );
 
   // tags 값이 바뀔 때
-  // useEffect(() => {
-  //   setLocalTags(tags);
-  // }, [tags]);
+  useEffect(() => {
+    setLocalTags(tags);
+  }, [tags]);
 
   return (
     <Paper className={classes.root}>
@@ -133,6 +138,11 @@ const TagBox = () => {
       </form>
     </Paper>
   );
+};
+
+TagBox.propTypes = {
+  tags: PropTypes.array,
+  onRemove: PropTypes.func,
 };
 
 export default TagBox;

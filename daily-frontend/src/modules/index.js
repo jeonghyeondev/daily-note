@@ -3,12 +3,14 @@ import { all } from 'redux-saga/effects';
 import auth, { authSaga } from './auth';
 import loading from './loading';
 import user, { userSaga } from './user';
+import write from './write';
 
 // 루트 리듀서
 const rootReducer = combineReducers({
   auth,
   loading,
   user,
+  write,
 });
 
 export function* rootSaga() {

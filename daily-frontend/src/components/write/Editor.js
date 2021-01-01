@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Quill from 'quill';
 import 'quill/dist/quill.bubble.css';
 import styled from 'styled-components';
@@ -33,7 +34,7 @@ const QuillWrapper = styled.div`
  * 글쓰기 에디터
  */
 
-const Editor = () => {
+const Editor = ({ title, body, onChangeField }) => {
   const classes = useStyles();
   const quillElement = useRef(null); // Quill을 적용할 DivElement를 설정
   const quillInstance = useRef(null); // Quill 인스턴스를 설정
@@ -56,24 +57,24 @@ const Editor = () => {
 
     // quill에 text-change 이벤트 핸들러 등록
     // 참고: https://quilljs.com/docs/api/#events
-    // const quill = quillInstance.current;
-    // quill.on('text-change', (delta, oldDelta, source) => {
-    //   if (source === 'user') {
-    //     onChangeField({ key: 'body', value: quill.root.innerHTML });
-    //   }
-    // });
-  }, []);
+    const quill = quillInstance.current;
+    quill.on('text-change', (delta, oldDelta, source) => {
+      if (source === 'user') {
+        onChangeField({ key: 'body', value: quill.root.innerHTML });
+      }
+    });
+  }, [onChangeField]);
 
-  // const mounted = useRef(false);
-  // useEffect(() => {
-  //   if (mounted.current) return;
-  //   mounted.current = true;
-  //   quillInstance.current.root.innerHTML = body;
-  // }, [body]);
+  const mounted = useRef(false);
+  useEffect(() => {
+    if (mounted.current) return;
+    mounted.current = true;
+    quillInstance.current.root.innerHTML = body;
+  }, [body]);
 
-  // const onChangeTitle = (e) => {
-  //   onChangeField({ key: 'title', value: e.target.value });
-  // };
+  const onChangeTitle = (e) => {
+    onChangeField({ key: 'title', value: e.target.value });
+  };
 
   return (
     <Paper className={classes.root}>
@@ -83,12 +84,20 @@ const Editor = () => {
         fullWidth
         className={classes.editorTitle}
         color="secondary"
+        onChange={onChangeTitle}
+        value={title}
       />
       <QuillWrapper>
         <div ref={quillElement} />
       </QuillWrapper>
     </Paper>
   );
+};
+
+Editor.propTypes = {
+  title: PropTypes.string,
+  body: PropTypes.string,
+  onChangeField: PropTypes.func,
 };
 
 export default Editor;

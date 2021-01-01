@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeField, initializeForm, login } from '../../modules/auth';
 import AuthForm from '../../components/auth/AuthForm';
@@ -79,6 +80,10 @@ const LoginForm = ({ history }) => {
       error={error}
     />
   );
+};
+
+LoginForm.propTypes = {
+  history: PropTypes.object,
 };
 
 export default withRouter(LoginForm);

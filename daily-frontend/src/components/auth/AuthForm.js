@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import {
@@ -128,6 +129,14 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
       </Box>
     </React.Fragment>
   );
+};
+
+AuthForm.propTypes = {
+  type: PropTypes.string,
+  form: PropTypes.object,
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func,
+  error: PropTypes.func,
 };
 
 export default AuthForm;

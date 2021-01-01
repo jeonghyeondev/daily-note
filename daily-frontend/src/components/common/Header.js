@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -118,6 +119,11 @@ const Header = ({ user, onLogout }) => {
       </AppBar>
     </div>
   );
+};
+
+Header.propTypes = {
+  user: PropTypes.any,
+  onLogout: PropTypes.func,
 };
 
 export default Header;
