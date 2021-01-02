@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {
   Card,
   CardContent,
-  CardMedia,
+  // CardMedia,
   Typography,
   Box,
   Button,
@@ -84,13 +84,13 @@ const PostItem = ({ post }) => {
     <Card className={classes.postItem}>
       <CardActionArea>
         <Link to={`/@${user.username}/${_id}`}>
-          <CardMedia
+          {/* <CardMedia
             component="img"
             alt="Contemplative Reptile"
             height="140"
             image="https://material-ui.com/static/images/cards/contemplative-reptile.jpg"
             title="Contemplative Reptile"
-          />
+          /> */}
           <CardContent style={{ paddingBottom: 8 }}>
             <Typography
               gutterBottom
