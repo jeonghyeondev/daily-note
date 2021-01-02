@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Box, Typography, Divider } from '@material-ui/core';
 import SubInfo from '../common/SubInfo';
 import Tags from '../common/Tags';
+import { Helmet } from 'react-helmet-async';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,6 +55,9 @@ const PostViewer = ({ post, error, loading, actionButtons }) => {
 
   return (
     <Paper className={classes.root}>
+      <Helmet>
+        <title>{title}- DAILY NOTE</title>
+      </Helmet>
       <Box>
         <Typography variant="h3" gutterBottom className={classes.viewerTitle}>
           {title}

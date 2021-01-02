@@ -7,10 +7,14 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import WritePage from './pages/WritePage';
 import PostPage from './pages/PostPage';
+import { Helmet } from 'react-helmet-async';
 
 const App = () => {
   return (
     <React.Fragment>
+      <Helmet>
+        <title>DAILY NOTE</title>
+      </Helmet>
       <HeaderContainer />
       <Toolbar />
       <Switch>
