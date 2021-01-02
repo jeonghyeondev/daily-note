@@ -1,5 +1,7 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import HeaderContainer from './containers/common/HeaderContainer';
+import { Toolbar } from '@material-ui/core';
 import PostListPage from './pages/PostListPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -9,11 +11,15 @@ import PostPage from './pages/PostPage';
 const App = () => {
   return (
     <React.Fragment>
-      <Route component={PostListPage} path={['/@:username', '/']} exect />
-      <Route component={LoginPage} path="/login" />
-      <Route component={RegisterPage} path="/register" />
-      <Route component={WritePage} path="/write" />
-      <Route component={PostPage} path="/@:username/:postId" />
+      <HeaderContainer />
+      <Toolbar />
+      <Switch>
+        <Route component={PostListPage} path={['/', '/@:username']} exact />
+        <Route component={LoginPage} path="/login" />
+        <Route component={RegisterPage} path="/register" />
+        <Route component={WritePage} path="/write" />
+        <Route component={PostPage} path="/@:username/:postId" />
+      </Switch>
     </React.Fragment>
   );
 };

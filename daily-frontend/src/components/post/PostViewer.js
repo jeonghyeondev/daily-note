@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper, Box, Typography, Chip, Divider } from '@material-ui/core';
+import { Paper, Box, Typography, Divider } from '@material-ui/core';
+import SubInfo from '../common/SubInfo';
+import Tags from '../common/Tags';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,15 +13,14 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
   },
   username: {
-    marginRight: theme.spacing(2),
     fontWeight: 'bold',
-  },
-  chip: {
-    marginRight: theme.spacing(0.5),
   },
   chipContent: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(5),
+  },
+  chip: {
+    marginRight: theme.spacing(0.5),
   },
   postContent: {
     marginTop: theme.spacing(5),
@@ -58,30 +59,8 @@ const PostViewer = ({ post, error, loading }) => {
           {title}
         </Typography>
       </Box>
-      <Box>
-        <Typography
-          variant="subtitle1"
-          component="p"
-          display="inline"
-          className={classes.username}
-        >
-          {user.username}
-        </Typography>
-        <Typography color="textSecondary" display="inline">
-          {new Date(publishedDate).toLocaleDateString()}
-        </Typography>
-      </Box>
-      <Box className={classes.chipContent}>
-        {tags.map((tag, index) => (
-          <Chip
-            key={index}
-            label={`#${tag}`}
-            color="secondary"
-            size="small"
-            className={classes.chip}
-          />
-        ))}
-      </Box>
+      <SubInfo username={user.username} publishedDate={publishedDate} />
+      <Tags tags={tags} />
       <Divider variant="middle" style={{ margin: 0 }} />
       <Box
         className={classes.postContent}

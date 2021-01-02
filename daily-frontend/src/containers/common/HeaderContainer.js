@@ -7,7 +7,7 @@ import { logout } from '../../modules/user';
  * 헤더컨테이너
  */
 
-const HeaderContaeinr = () => {
+const HeaderContainer = () => {
   const { user } = useSelector(({ user }) => ({ user: user.user }));
   const dispatch = useDispatch();
   const onLogout = () => {
@@ -16,4 +16,4 @@ const HeaderContaeinr = () => {
   return <Header user={user} onLogout={onLogout} />;
 };
 
-export default HeaderContaeinr;
+export default HeaderContainer;

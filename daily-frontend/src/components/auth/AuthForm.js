@@ -136,7 +136,7 @@ AuthForm.propTypes = {
   form: PropTypes.object,
   onChange: PropTypes.func,
   onSubmit: PropTypes.func,
-  error: PropTypes.func,
+  error: PropTypes.string,
 };
 
 export default AuthForm;
