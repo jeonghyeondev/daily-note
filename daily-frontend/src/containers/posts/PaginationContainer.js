@@ -24,7 +24,7 @@ const PaginationContainer = ({ location }) => {
       <Paginations
         tag={tag}
         username={username}
-        page={parseInt(page, 10)}
+        page={parseInt(page, 12)}
         lastPage={lastPage}
       />
     </div>
