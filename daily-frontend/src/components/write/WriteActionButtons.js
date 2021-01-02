@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
  * 에디터 포스트등록/취소 버튼
  */
 
-const WriteActionButtons = ({ onCancel, onPublish }) => {
+const WriteActionButtons = ({ onCancel, onPublish, isEdit }) => {
   const classes = useStyles();
 
   return (
@@ -28,7 +28,7 @@ const WriteActionButtons = ({ onCancel, onPublish }) => {
         className={classes.writeButton}
         onClick={onPublish}
       >
-        포스트 등록
+        포스트 {isEdit ? '수정' : '등록'}
       </Button>
       <Button
         variant="contained"

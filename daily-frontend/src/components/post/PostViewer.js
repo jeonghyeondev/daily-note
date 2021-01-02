@@ -32,14 +32,14 @@ const useStyles = makeStyles((theme) => ({
  * 포스트 읽기 페이지
  */
 
-const PostViewer = ({ post, error, loading }) => {
+const PostViewer = ({ post, error, loading, actionButtons }) => {
   const classes = useStyles();
 
   // 에러 발생 시
   if (error) {
     if (error.response && error.response.status === 404) {
       return (
-        <Paper className={classes.root}>존재하지 않은 포스트입ㄴ디ㅏ.</Paper>
+        <Paper className={classes.root}>존재하지 않은 포스트입니다.</Paper>
       );
     }
     return <Paper>오류 발생!</Paper>;
@@ -62,6 +62,7 @@ const PostViewer = ({ post, error, loading }) => {
       <SubInfo username={user.username} publishedDate={publishedDate} />
       <Tags tags={tags} />
       <Divider variant="middle" style={{ margin: 0 }} />
+      {actionButtons}
       <Box
         className={classes.postContent}
         dangerouslySetInnerHTML={{ __html: body }}
