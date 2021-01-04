@@ -1,8 +1,8 @@
 # daily-note
 
-react daily note project
-프론트와 백엔드를 사용하여 CRUD 게시판 만들기
-#react #koa #material-ui #MongoDB
+react daily note project.   
+프론트와 백엔드를 사용하여 CRUD 게시판 만들기.   
+#react #koa #material-ui #MongoDB   
 
 open url [http://3.21.237.225/](http://3.21.237.225/)
 
