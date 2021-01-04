@@ -38,7 +38,9 @@ theme
 
 2. 모듈, 컴포넌트를 react-router-dom와 Redux로 상태 관리
 
-3. 라이브러리
+3. material-ui theme 사용하여 색상 dark/normal 기능 구현
+
+4. 라이브러리
  - material-ui
  - PropTypes
  - qs: URL의 query string을 stringify이나 파싱.
