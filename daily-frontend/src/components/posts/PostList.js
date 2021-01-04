@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(8, 5),
     maxWidth: 1600,
     margin: '0 auto',
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(3),
+    },
   },
   postList: {
     display: 'flex',

@@ -7,6 +7,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(0, 5, 5, 5),
     width: '100%',
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(0, 3, 3, 3),
+    },
   },
   writeButton: {
     marginRight: theme.spacing(1),

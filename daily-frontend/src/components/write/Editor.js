@@ -10,12 +10,19 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(8, 5),
     boxShadow: 'none',
-    // minHeight: 'calc(100% - 72px)',
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(3),
+    },
   },
   editorTitle: {
     fontSize: 48,
     paddingBottom: theme.spacing(1.5),
     marginBottom: theme.spacing(3),
+    [theme.breakpoints.down('xs')]: {
+      fontSize: 20,
+      paddingBottom: theme.spacing(1),
+      marginBottom: theme.spacing(2),
+    },
   },
 }));
 const QuillWrapper = styled.div`

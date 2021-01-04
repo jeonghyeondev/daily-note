@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Paper, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     position: 'absolute',
     left: 0,
@@ -16,11 +16,18 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(3),
+    },
   },
   authWrap: {
     padding: '2.5rem',
     width: 400,
     borderRadius: 5,
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+      padding: theme.spacing(4),
+    },
   },
   authTtitle: {
     '& > a': {
@@ -31,7 +38,7 @@ const useStyles = makeStyles({
       letterSpacing: 1,
     },
   },
-});
+}));
 
 /**
  * 회원가입 or 로그인폼 스타일

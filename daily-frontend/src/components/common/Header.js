@@ -11,6 +11,7 @@ import {
   IconButton,
   Button,
   Divider,
+  useMediaQuery,
 } from '@material-ui/core';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
@@ -27,9 +28,31 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 20,
     fontWeight: 'bold',
     marginLeft: theme.spacing(1),
+    [theme.breakpoints.down('xs')]: {
+      fontSize: 18,
+      width: 40,
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+    },
   },
   headerBtn: {
     margin: theme.spacing(0, 3),
+    [theme.breakpoints.down('xs')]: {
+      margin: theme.spacing(0, 2),
+    },
+  },
+  divider: {
+    height: 20,
+    marginRight: theme.spacing(4),
+    [theme.breakpoints.down('xs')]: {
+      display: 'none',
+    },
+  },
+  themeModeButton: {
+    [theme.breakpoints.down('xs')]: {
+      padding: 0,
+    },
   },
 }));
 
@@ -52,6 +75,11 @@ const Header = ({ user, onLogout }) => {
     }
   };
 
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('xs'));
+  const buttonProps = {
+    size: isSmallScreen ? 'small' : 'large',
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position="fixed" className={classes.appBar}>
@@ -71,9 +99,9 @@ const Header = ({ user, onLogout }) => {
               </Typography>
 
               <Button
+                {...buttonProps}
                 variant="outlined"
                 color="secondary"
-                size="large"
                 className={classes.headerBtn}
                 href="/login"
                 onClick={onLogout}
@@ -83,9 +111,9 @@ const Header = ({ user, onLogout }) => {
             </React.Fragment>
           ) : (
             <Button
+              {...buttonProps}
               variant="outlined"
               color="secondary"
-              size="large"
               className={classes.headerBtn}
               href="/login"
             >
@@ -96,7 +124,7 @@ const Header = ({ user, onLogout }) => {
             orientation="vertical"
             variant="middle"
             light
-            style={{ height: '20px', marginRight: '32px' }}
+            className={classes.divider}
           />
           <FormControlLabel
             control={<Switch checked={isDark} onChange={handleThemeChange} />}
@@ -106,6 +134,7 @@ const Header = ({ user, onLogout }) => {
                 color="inherit"
                 aria-label="mode"
                 onClick={() => setTheme(currentTheme)}
+                className={classes.themeModeButton}
               >
                 {icon}
               </IconButton>

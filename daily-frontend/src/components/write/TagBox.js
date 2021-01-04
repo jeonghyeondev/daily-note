@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(0, 5, 4, 5),
     width: '100%',
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(3),
+    },
   },
   tagTitle: {
     marginTop: theme.spacing(5),
