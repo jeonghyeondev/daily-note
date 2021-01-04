@@ -1,8 +1,8 @@
 # daily-note
 
-react daily note project  
-프론트와 백엔드를 사용하여 CRUD 게시판 만들기   
-#react #koa #material-ui #MongoDB    
+react daily note project
+프론트와 백엔드를 사용하여 CRUD 게시판 만들기
+#react #koa #material-ui #MongoDB
 
 open url [http://3.21.237.225/](http://3.21.237.225/)
 
@@ -34,17 +34,11 @@ theme
 ## 기능관련 (frontend)
 
 ```
-1.title, body, tags, publishedDate 2. Posts 스키마와 모델 구현
-3. 생성, 조회, 삭제, 수정 기능 구현
-4. ObjectId 검증
-5. 페이지네이션 기능
-6. 회원 인증 시스템
- - 토큰 기반 인증 시스템
- - 회원가입, 로그인, 로그인 확인, 로그아웃
- - 토큰 발급, 토큰 검증
- - 로그인 시에만 생성, 수정, 삭제
- - 태그로 필터링 가능
-7. 라이브러리
+1. 회원가입 / 로그인, 포스트 조회, 특정 포스트 조회, 포스트 작성, 포스트 수정 / 삭제
+
+2. 모듈, 컴포넌트를 react-router-dom와 Redux로 상태 관리
+
+3. 라이브러리
  - material-ui
  - PropTypes
  - qs: URL의 query string을 stringify이나 파싱.
@@ -59,17 +53,22 @@ theme
 ## 기능관련 (backend)
 
 ```
-1.title, body, tags, publishedDate 2. Posts 스키마와 모델 구현
-3. 생성, 조회, 삭제, 수정 기능 구현
-4. ObjectId 검증
-5. 페이지네이션 기능
-6. 회원 인증 시스템
+1. title, body, tags, publishedDate Posts 스키마와 모델 구현
+
+2. 생성, 조회, 삭제, 수정 기능 구현
+
+3. ObjectId 검증
+
+4. 페이지네이션 기능
+
+5. 회원 인증 시스템
  - 토큰 기반 인증 시스템
  - 회원가입, 로그인, 로그인 확인, 로그아웃
  - 토큰 발급, 토큰 검증
  - 로그인 시에만 생성, 수정, 삭제
  - 태그로 필터링 가능
-7. 라이브러리
+
+6. 라이브러리
  - dotenv
  - esm
  - joi
