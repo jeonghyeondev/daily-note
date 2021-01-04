@@ -1,6 +1,6 @@
 # daily-note
 
-react daily note porojce. 
+react daily note porojce.   
 프론트와 백엔드를 사용하여 CRUD 게시판 만들기.   
 #react #koa #material-ui #MongoDB    
 
